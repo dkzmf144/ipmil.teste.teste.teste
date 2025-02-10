@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Online - Produtos</title>
+    <style>
+        /* Estilo geral do body e html */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container principal */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Estilo para cada produto */
+        .product {
+            width: 200px; /* Ajuste a largura conforme necessário */
+            margin: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        /* Imagem do produto */
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Nome do produto */
+        .product .name {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        /* Preço do produto */
+        .product .price {
+            font-size: 1.5em;
+            color: #e60000; /* Cor de destaque para o preço */
+            margin-bottom: 15px;
+        }
+
+        /* Botão de compra */
+        .buy-button {
+            background-color: #1300c0; /* Cor de fundo azul */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #0a00a0; /* Cor de fundo quando o botão é sobrevoado */
+        }
+
+        /* Efeito de hover no produto */
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Estilo do modal (janela de login) */
+        .modal {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            z-index: 1; /* Fica na frente de outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+            padding-top: 60px;
+        }
+
+        /* Estilo da caixa do modal */
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        /* Estilo do botão de fechar o modal */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilo do formulário de login */
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1300c0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #0a00a0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container de produtos -->
+    <div class="container">
+        <!-- Produto 1 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\D_NQ_NP_760244-MLB52755890277_122022-O.webp" alt="Produto 1">
+            <div class="name">Gandola Multcamblack</div>
+            <div class="price">R$ 120,00</div>
+            <button class="buy-button" onclick="openLoginModal('https://www.fairsoft.com.br/gandola-camuflada-commando-multicam-black')">Comprar</button>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\cal_a_t_tica_multicamblack_fairsoft_frente.jpg" alt="Produto 2">
+            <div class="name">Calça Multcamblack</div>
+            <div class="price">R$ 99,90</div>
+            <button class="buy-button" onclick="openLoginModal('https://www.lojadacarabina.com.br/calca-combat-camuflado-multicam-black-belica.html')">Comprar</button>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\4703501266_1.webp" alt="Produto 3">
+            <div class="name">Coturno</div>
+            <div class="price">R$ 89,00</div>
+            <button class="buy-button" onclick="openLoginModal('https://www.americanas.com.br/produto/4703501207/coturno-masculino-militar-cano-alto-motociclista?tamanho=41&cor=Preto&condition=NEW')">Comprar</button>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\987299_rifle-airsoft-fal-eletrico-full-metal-blow-ba-pas144_m4_636421363168502676.webp" alt="Produto 4">
+            <div class="name">AIRSOFT FAL 6mm.</div>
+            <div class="price">R$ 2.000</div>
+            <button class="buy-button" onclick="openLoginModal('https://www.warsoftbrasil.com.br/rifle-de-airsoft-ares-aeg-l1a1.html')">Comprar</button>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\222137954ec25aba09c.webp" alt="Produto 5">
+            <div class="name">Cinto</div>
+            <div class="price">R$ 47,00</div>
+            <button class="buy-button" onclick="openLoginModal('https://www.febredoaco.com.br/produto/cinto-tatico-militar-cobra-nylon-engate-rapido.html')">Comprar</button>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="product">
+            <img src="C:\Users\IsaquePereiraAlcanta\Desktop\tudo aqui\formulario\camiseta-arrest-combat-preta-01.webp" alt="Produto 6">
+            <div class="name">Combat</div>
+            <div class="price">R$ 150,00</div>
+            <button class="buy-button" onclick="openLoginModal('https://shopee.com.br/Camisa-Combat-T-shirt-Preta-Militar-Refor%C3%A7ada-Use-T%C3%A1tico-i.264804138.22828108225')">Comprar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form class="login-form" onsubmit="redirectToPage(event)">
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DKZMF.</p>
+    </footer>
+
+    <script>
+        let currentProductPage = '';
+
+        function openLoginModal(productPage) {
+            currentProductPage = productPage;
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function redirectToPage(event) {
+            event.preventDefault(); // Impede o envio do formulário
+            window.location.href = currentProductPage;
+        }
+    </script>
+</body>
+</html>
